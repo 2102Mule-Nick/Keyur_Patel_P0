@@ -21,5 +21,5 @@ public class OutOfStockException extends Exception {
 	public OutOfStockException(Throwable cause) {
 		super(cause);
 	}
-	
+
 }
