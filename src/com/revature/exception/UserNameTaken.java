@@ -1,6 +1,6 @@
 package com.revature.exception;
 
-public class UserNameTaken extends Exception {
+public class UserNameTaken extends Exception{
 
 	public UserNameTaken() {
 		super();

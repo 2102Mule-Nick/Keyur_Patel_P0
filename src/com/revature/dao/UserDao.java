@@ -9,13 +9,13 @@ import com.revature.pojo.User;
 public interface UserDao {
 
 	public void createUser(User user) throws UserNameTaken;
-
+	
 	public User getUserByUsername(String username) throws UserNotFound;
-
+	
 	public List<User> getAllUsers();
-
-	public void updateUser(User user);
-
-	public void removeUser(User user);
-
+	
+	public void updateUser(User user, String new_password, String new_firstname, String new_lastname);
+	
+	public void deleteUser(User user);
+	
 }

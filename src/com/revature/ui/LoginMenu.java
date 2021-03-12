@@ -40,13 +40,17 @@ public class LoginMenu implements Menu {
 		String username = scan.nextLine();
 		System.out.println("Please Enter Password");
 		String password = scan.nextLine();
-		
-		User user = new User(username, password);
-		
+		System.out.println("Please enter First name:");
+		String firstname = scan.nextLine();
+		System.out.println("Please enter Last name:");
+		String lastname = scan.nextLine();
+
+		User user = new User(username, password, firstname, lastname);
+
 		try {
 			authService.authenticateUser(user);
 			System.out.println("Login successful");
-			//throw new Error();
+			// throw new Error();
 		} catch (UserNotFound e) {
 			System.out.println("Username does not exist.  Please register an account.");
 		} catch (InvalidPassword e) {
@@ -57,7 +61,7 @@ public class LoginMenu implements Menu {
 		} finally {
 			System.out.println("Login Process Ended");
 		}
-		
+
 	}
 
 	@Override

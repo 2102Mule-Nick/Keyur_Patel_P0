@@ -15,22 +15,22 @@ import com.revature.exception.UserNameTaken;
 import com.revature.exception.UserNotFound;
 import com.revature.pojo.User;
 
-public class UserDaoKryo implements UserDao {
-
+public final class UserDaoKryo implements UserDao {
+	
 	private Kryo kryo = new Kryo();
 
 	private Logger log = Logger.getRootLogger();
-
+	
 	private static final String FOLDER_NAME = "users\\";
-
+	
 	private static final String FILE_EXTENSION = ".dat";
 
 	@Override
 	public void createUser(User user) throws UserNameTaken {
-
+		
 		log.info("Starting to create user");
-
-		try (FileOutputStream outputStream = new FileOutputStream(FOLDER_NAME + user.getUsername() + FILE_EXTENSION)) {
+		
+		try(FileOutputStream outputStream = new FileOutputStream(FOLDER_NAME + user.getUsername() + FILE_EXTENSION)) {
 			Output output = new Output(outputStream);
 			kryo.writeObject(output, user);
 			output.close();
@@ -39,6 +39,7 @@ public class UserDaoKryo implements UserDao {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	@Override
@@ -50,7 +51,7 @@ public class UserDaoKryo implements UserDao {
 			input.close();
 			System.out.println(user);
 			return user;
-
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -58,7 +59,7 @@ public class UserDaoKryo implements UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		return null;
 	}
 
@@ -68,14 +69,13 @@ public class UserDaoKryo implements UserDao {
 		return null;
 	}
 
-	@Override
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void removeUser(User user) {
+	public void deleteUser(User user) {
 		// TODO Auto-generated method stub
 
 	}
@@ -85,4 +85,10 @@ public class UserDaoKryo implements UserDao {
 		kryo.register(User.class);
 	}
 
+	@Override
+	public void updateUser(User user, String new_password, String new_firstname, String new_lastname) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
