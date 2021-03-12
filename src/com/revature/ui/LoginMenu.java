@@ -50,6 +50,13 @@ public class LoginMenu implements Menu {
 		try {
 			authService.authenticateUser(user);
 			System.out.println("Login successful");
+			System.out.println("What would you like to do next?");
+			System.out.println("1. Create new Status.");
+			System.out.println("2. Edit your Status.");
+			System.out.println("3. View other's Status.");
+			System.out.println("4. Delete your Status.");
+			
+			
 			// throw new Error();
 		} catch (UserNotFound e) {
 			System.out.println("Username does not exist.  Please register an account.");
